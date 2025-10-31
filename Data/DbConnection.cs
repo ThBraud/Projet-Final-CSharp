@@ -10,9 +10,9 @@ public class DbConnection
         _carDbContext = carDbContext;
     }
 
-    public void SaveFullClasse(Car cars)
+    public void Addcars(Car cars)
     {
-        _carDbContext.Add(cars);
+        _carDbContext.Addcars);
         
         _carDbContext.SaveChanges();
     }
