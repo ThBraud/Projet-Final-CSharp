@@ -4,7 +4,7 @@ namespace Projet_Finale.Model;
 
 public class Client
 {
-    [key]
+    [Key]
     public uuid id_client { get; set; } = new.guid();
     
     [Required]
