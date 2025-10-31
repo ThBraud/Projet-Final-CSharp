@@ -22,8 +22,8 @@ public class CarDbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // Relation Classe -> Person (1..n)
-        modelBuilder.Entity<Person>()
+        // Relation Clients -> Car (1..n)
+        modelBuilder.Entity<>()
             .HasOne(p => p.Classe)
             .WithMany(c => c.Persons)
             .HasForeignKey(p => p.IdClasse);
