@@ -11,7 +11,7 @@ public class CarDbContext
     public DbSet<Car> Cars { get; set; }
     
     // --- Constructeur ---
-    public CarDbContextT(DbContextOptions<CarDbContext> options)
+    public CarDbContext(DbContextOptions<CarDbContext> options)
         : base(options)
     { }
     // Constructeur vide pour EF CLI
@@ -35,7 +35,7 @@ public class CarDbContext
         // Charger la configuration manuellement
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile(@"", optional: false, reloadOnChange: true)
+            .AddJsonFile(@"C:\Csharp_Projet_Finale\Projet_Finale\appsettings.json", optional: false, reloadOnChange: true)
             .Build();
         
         if (!optionsBuilder.IsConfigured)
