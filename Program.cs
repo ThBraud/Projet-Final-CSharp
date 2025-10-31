@@ -6,7 +6,7 @@ using Projet_Finale.Data.InterfaceRepository;
 using Projet_Finale.Data;
 using Projet_Finale.Model;
 using Projet_Finale.Utils;
-using System.Globalization;
+
 
 #region lancement services
 
@@ -30,8 +30,8 @@ var host = Host.CreateDefaultBuilder(args)
     .Build();
 
 using var scope = host.Services.CreateScope();
-ICarRepository carRepository = scope.ServiceProvider.GetRequiredService<ICarRepository>();
-
+var carRepository = scope.ServiceProvider.GetRequiredService<ICarRepository>();
+var dbConnection = scope.ServiceProvider.GetRequiredService<DbConnection>();
 #endregion
 
 #region  CSV Car
@@ -49,14 +49,15 @@ for (int i = 1; i < lignes.Length; i++)
     car.Brand = line.Split('/')[0];
     car.Model = line.Split('/')[1];
     car.Years = int.Parse(line.Split('/')[2]);
-    car.PreTaxPrices= float.Parse(line.Split('/')[3], CultureInfo.InvariantCulture);
+    car.PreTaxPrices= float.Parse(line.Split('/')[3]);
     car.PriceIncludingTax = car.PreTaxPrices * 1.2f;
     car.Color = line.Split('/')[4];
     car.IsSelling = bool.Parse(line.Split('/')[5]);
     
     cars.Add(car);
-}
 
+}
+carRepository.AddCars(cars);
 #endregion
 
 
@@ -82,5 +83,7 @@ for (int i = 1; i < lignes_client.Length; i++)
     
     
 }
+
+dbConnection.AddClients(client);
 
 #endregion

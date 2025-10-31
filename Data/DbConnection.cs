@@ -11,10 +11,16 @@ public class DbConnection
         _carDbContext = carDbContext;
     }
 
-    public void Addcars(Car cars)
+    public void AddCars(List<Car> cars)
     {
-        _carDbContext.Cars.Add(cars);
+        _carDbContext.Cars.AddRange(cars);
 
+        _carDbContext.SaveChanges();
+    }
+    
+    public void AddClients(List<Client> clients)
+    {
+        _carDbContext.Customers.AddRange(clients);
         _carDbContext.SaveChanges();
     }
 }
