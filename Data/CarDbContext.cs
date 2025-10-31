@@ -3,7 +3,7 @@ namespace Projet_Finale.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-public class CarDbContext
+public class CarDbContext : DbContext
 {
     // --- Tables principales ---
     public DbSet<Client> Customers { get; set; }
