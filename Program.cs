@@ -6,6 +6,7 @@ using Projet_Finale.Data.InterfaceRepository;
 using Projet_Finale.Data;
 using Projet_Finale.Model;
 using Projet_Finale.Utils;
+using System.Globalization;
 
 #region lancement services
 
@@ -48,7 +49,7 @@ for (int i = 1; i < lignes.Length; i++)
     car.Brand = line.Split('/')[0];
     car.Model = line.Split('/')[1];
     car.Years = int.Parse(line.Split('/')[2]);
-    car.PreTaxPrices= float.Parse(line.Split('/')[3]);
+    car.PreTaxPrices= float.Parse(line.Split('/')[3], CultureInfo.InvariantCulture);
     car.PriceIncludingTax = car.PreTaxPrices * 1.2f;
     car.Color = line.Split('/')[4];
     car.IsSelling = bool.Parse(line.Split('/')[5]);
@@ -61,7 +62,7 @@ for (int i = 1; i < lignes.Length; i++)
 
 #region CSV Client
 
-String path_client = configuration.GetRequiredSection("CSVFiles2")["Client"];
+String path_client = configuration.GetRequiredSection("CSVFiles2")["Customers"];
 
 List<Client> client = new List<Client>(); 
 
@@ -73,7 +74,7 @@ for (int i = 1; i < lignes_client.Length; i++)
     Client c = new Client();
     c.LastName = line.Split('%')[0];
     c.FirstName = line.Split('%')[1];
-    c.BirthDate = DateTimeUtils.ConvertToDateTime(line.Split(',')[3]);
+    c.BirthDate = (line.Split('%')[3]);
     c.PhoneNumber = line.Split('%')[3];
     c.Email = line.Split('%')[4];
     
