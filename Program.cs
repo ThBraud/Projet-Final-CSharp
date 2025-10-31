@@ -25,11 +25,11 @@ var host = Host.CreateDefaultBuilder(args)
         // On enregistre notre service applicatif
         services.AddTransient<DbConnection>();
         
-        services.AddTransient<IClientRepository, clientRepository>();
+        services.AddTransient<ICarRepository, CarRepository>();
     })
     .Build();
 
 using var scope = host.Services.CreateScope();
-IClientRepository clientRepository = scope.ServiceProvider.GetRequiredService<IClientRepository>();
+ICarRepository clientRepository = scope.ServiceProvider.GetRequiredService<ICarRepository>();
 
 #endregion

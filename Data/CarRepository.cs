@@ -3,18 +3,18 @@ using Projet_Finale.Model;
 
 namespace Projet_Finale.Data;
 
-public class clientRepository : IClientRepository
+public class CarRepository : ICarRepository
 {
     private readonly CarDbContext _carDbContext;
 
-    public clientRepository(CarDbContext carDbContext)
+    public CarRepository(CarDbContext carDbContext)
     {
         _carDbContext = carDbContext;
     }
 
-    public List<Client> GetAllClient()
+    public List<Car> GetAllCar()
     {
-        return _carDbContext.Customers.ToList();
+        return _carDbContext.Cars.ToList();
     }
 }
     
