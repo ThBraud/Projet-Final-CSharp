@@ -26,12 +26,15 @@ var host = Host.CreateDefaultBuilder(args)
         services.AddTransient<DbConnection>();
         
         services.AddTransient<ICarRepository, CarRepository>();
+        services.AddTransient<IClientRepository, ClientRepository>();
     })
     .Build();
 
 using var scope = host.Services.CreateScope();
 var carRepository = scope.ServiceProvider.GetRequiredService<ICarRepository>();
-var dbConnection = scope.ServiceProvider.GetRequiredService<DbConnection>();
+using var scope_client = host.Services.CreateScope();
+IClientRepository clientRepository = scope_client.ServiceProvider.GetRequiredService<IClientRepository>();
+
 #endregion
 
 #region CSV Client
@@ -56,9 +59,9 @@ for (int i = 1; i < lignes_client.Length; i++)
     
     
 }
-
-dbConnection.AddClients(client);
-
+//Insertion données Client
+clientRepository.AddClients(client);
+var clientsFromDb = clientRepository.GetAllClients();
 #endregion
 
 
@@ -78,15 +81,39 @@ for (int i = 1; i < lignes.Length; i++)
     car.Brand = line.Split('/')[0];
     car.Model = line.Split('/')[1];
     car.Years = int.Parse(line.Split('/')[2]);
-    car.PreTaxPrices= float.Parse(line.Split('/')[3],CultureInfo.InvariantCulture);
+    car.PreTaxPrices = float.Parse(line.Split('/')[3], CultureInfo.InvariantCulture);
     car.PriceIncludingTax = car.PreTaxPrices * 1.2f;
     car.Color = line.Split('/')[4];
     car.IsSelling = bool.Parse(line.Split('/')[5]);
-    
+
     cars.Add(car);
 
+    var clients = clientRepository.GetAllClients();
+    var random = new Random();
+
+    for (int j = 0; j < cars.Count; j++)
+    {
+        var car_sell = cars[j];
+
+        // Si la voiture est vendue, on lui assigne un client aléatoire
+        if (car_sell.IsSelling)
+        {
+            var randomClient = clientsFromDb[random.Next(clientsFromDb.Count)];
+            car_sell.id_client = randomClient.id_client; // UUID du client
+            car_sell.Client = randomClient;
+        }
+        else
+        {
+            car_sell.id_client = null; // aucun client
+            car_sell.Client = null;
+        }
+    }
 }
-carRepository.AddCars(cars);
+
+//Insertion données Car
+    carRepository.AddCars(cars);
+
+
 #endregion
 
 
