@@ -74,7 +74,7 @@ for (int i = 1; i < lignes_client.Length; i++)
     Client c = new Client();
     c.LastName = line.Split('%')[0];
     c.FirstName = line.Split('%')[1];
-    c.BirthDate = (line.Split('%')[3]);
+    c.BirthDate = DateTimeUtils.ConvertToDateTime(line.Split('%')[2]);
     c.PhoneNumber = line.Split('%')[3];
     c.Email = line.Split('%')[4];
     
