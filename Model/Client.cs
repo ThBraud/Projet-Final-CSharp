@@ -5,7 +5,7 @@ namespace Projet_Finale.Model;
 public class Client
 {
     [Key]
-    public uuid id_client { get; set; } = new.guid();
+    public Guid id_client { get; set; } = new Guid();
     
     [Required]
     private string FirstName {get; set;}
