@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Projet_Finale.InterfaceRepository;
+using Projet_Finale.Data.InterfaceRepository;
 using Npgsql;
 using Projet_Finale.Data;
 using Projet_Finale.Model;
- 
+
 
 
 #region lancement services
@@ -27,11 +27,11 @@ var host = Host.CreateDefaultBuilder(args)
         // On enregistre notre service applicatif
         services.AddTransient<DbConnection>();
         
-        services.AddTransient<IClientRepository, ClientsRepository>();
+        services.AddTransient<IClientRepository, clientRepository>();
     })
     .Build();
 
 using var scope = host.Services.CreateScope();
-IClientRepository personRepository = scope.ServiceProvider.GetRequiredService<IClientRepository>();
+IClientRepository clientRepository = scope.ServiceProvider.GetRequiredService<IClientRepository>();
 
 #endregion

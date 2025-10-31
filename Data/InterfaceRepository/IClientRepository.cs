@@ -1,6 +1,8 @@
-namespace Projet_Finale.Data.InterfaceRepository;
+using Projet_Finale.Model;
 
-public class IClientRepository
-{
-    
-}
+namespace Projet_Finale.Data.InterfaceRepository;
+public interface IClientRepository
+
+    {
+        void AddClient(Car cars);
+    }

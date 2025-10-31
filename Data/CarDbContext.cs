@@ -1,5 +1,4 @@
 using Projet_Finale.Model;
-
 namespace Projet_Finale.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -23,8 +22,8 @@ public class CarDbContext
         base.OnModelCreating(modelBuilder);
 
         // Relation Clients -> Car (1..n)
-        modelBuilder.Entity<>()
-            .HasOne(p => p.Classe)
+        modelBuilder.Entity<Client>()
+            .HasOne(c => c.id_client
             .WithMany(c => c.Persons)
             .HasForeignKey(p => p.IdClasse);
     }
