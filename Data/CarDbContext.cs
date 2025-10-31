@@ -22,10 +22,10 @@ public class CarDbContext
         base.OnModelCreating(modelBuilder);
 
         // Relation Clients -> Car (1..n)
-        modelBuilder.Entity<Client>()
-            .HasOne(c => c.id_client
-            .WithMany(c => c.Persons)
-            .HasForeignKey(p => p.IdClasse);
+        modelBuilder.Entity<Cars>()
+            .HasOne(c => c.Id_car)
+            .WithMany(d => d.id_client)
+            .HasForeignKey(p => p.id_client);
     }
 
     // --- Configuration de la connexion ---
