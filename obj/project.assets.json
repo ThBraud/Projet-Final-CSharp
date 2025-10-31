@@ -8,19 +8,19 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Thomas\\.nuget\\packages\\": {}
+    "C:\\Users\\Lucas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Csharpnul\\Projet_Finale\\Projet_Finale.csproj",
+      "projectUniqueName": "C:\\Users\\Lucas\\OneDrive - SUP DE VINCI\\Documents\\B2\\C#\\Projet-Final-CSharp\\Projet_Finale.csproj",
       "projectName": "Projet_Finale",
-      "projectPath": "C:\\Csharpnul\\Projet_Finale\\Projet_Finale.csproj",
-      "packagesPath": "C:\\Users\\Thomas\\.nuget\\packages\\",
-      "outputPath": "C:\\Csharpnul\\Projet_Finale\\obj\\",
+      "projectPath": "C:\\Users\\Lucas\\OneDrive - SUP DE VINCI\\Documents\\B2\\C#\\Projet-Final-CSharp\\Projet_Finale.csproj",
+      "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lucas\\OneDrive - SUP DE VINCI\\Documents\\B2\\C#\\Projet-Final-CSharp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Thomas\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
