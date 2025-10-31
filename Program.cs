@@ -1,3 +1,34 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Projet_Finale;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
+using Projet_Finale.Data;
 
-Console.WriteLine("test4");
+
+#region lancement services
+
+// Charger la configuration manuellement
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile(@"C:\Csharp_Projet_Finale\Projet_Finale\appsettings.json", optional: false, reloadOnChange: true)
+    .Build();
+
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices(services =>
+    {
+        services.AddDbContext<CarDbContext>(options =>
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+
+        // On enregistre notre service applicatif
+        services.AddTransient<DbConnection>();
+        
+        services.AddTransient<IPersonRepository, PersonRepository>();
+    })
+    .Build();
+
+using var scope = host.Services.CreateScope();
+IPersonRepository personRepository = scope.ServiceProvider.GetRequiredService<IPersonRepository>();
+
+#endregion
