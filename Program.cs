@@ -61,7 +61,7 @@ for (int i = 1; i < lignes.Length; i++)
 
 #region CSV Client
 
-String path_client = configuration.GetRequiredSection("CSVFiles2")["Customer"];
+String path_client = configuration.GetRequiredSection("CSVFiles2")["Client"];
 
 List<Client> client = new List<Client>(); 
 

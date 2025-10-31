@@ -21,7 +21,8 @@ public class Client
 
     [Required] 
     private string email { get; set; }
-
+    
+    public ICollection<Car> Car { get; set; } = new List<Car>();
     
     #region Accessors
     

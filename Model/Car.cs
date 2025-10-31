@@ -33,7 +33,7 @@ public class Car
     
     public Guid id_client {get; set;}
     
-    public Client customer{get; set;}
+    public Client Client{get; set;}
 
     #region Accesors
     

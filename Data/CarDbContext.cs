@@ -22,9 +22,9 @@ public class CarDbContext
         base.OnModelCreating(modelBuilder);
 
         // Relation Clients -> Car (1..n)
-        modelBuilder.Entity<Cars>()
-            .HasOne(c => c.Id_car)
-            .WithMany(d => d.id_client)
+        modelBuilder.Entity<Car>()
+            .HasOne(ca => ca.Client)
+            .WithMany(cl => cl.Car)
             .HasForeignKey(p => p.id_client);
     }
 
