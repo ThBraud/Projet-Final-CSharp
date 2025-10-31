@@ -13,7 +13,7 @@ public class DbConnection
 
     public void Addcars(Car cars)
     {
-        _carDbContext.Addcars);
+        _carDbContext.Cars.Add(cars);
 
         _carDbContext.SaveChanges();
     }

@@ -1772,19 +1772,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lucas\\.nuget\\packages\\": {}
+    "C:\\Users\\Thomas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projet-Final-CSharp\\Projet_Finale.csproj",
+      "projectUniqueName": "C:\\Csharp_Projet_Finale\\Projet_Finale\\Projet_Finale.csproj",
       "projectName": "Projet_Finale",
-      "projectPath": "C:\\Projet-Final-CSharp\\Projet_Finale.csproj",
-      "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\Projet-Final-CSharp\\obj\\",
+      "projectPath": "C:\\Csharp_Projet_Finale\\Projet_Finale\\Projet_Finale.csproj",
+      "packagesPath": "C:\\Users\\Thomas\\.nuget\\packages\\",
+      "outputPath": "C:\\Csharp_Projet_Finale\\Projet_Finale\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Thomas\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
