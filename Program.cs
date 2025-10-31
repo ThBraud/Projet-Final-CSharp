@@ -6,7 +6,7 @@ using Projet_Finale.Data.InterfaceRepository;
 using Projet_Finale.Data;
 using Projet_Finale.Model;
 using Projet_Finale.Utils;
-
+using System.Globalization;
 
 #region lancement services
 
@@ -34,33 +34,6 @@ var carRepository = scope.ServiceProvider.GetRequiredService<ICarRepository>();
 var dbConnection = scope.ServiceProvider.GetRequiredService<DbConnection>();
 #endregion
 
-#region  CSV Car
-
-String path_car = configuration.GetRequiredSection("CSVFiles")["Car"];
-
-List<Car> cars = new List<Car>(); 
-
-var lignes = File.ReadAllLines(path_car);
-
-for (int i = 1; i < lignes.Length; i++)
-{
-    String line = lignes[i];
-    Car car = new Car();
-    car.Brand = line.Split('/')[0];
-    car.Model = line.Split('/')[1];
-    car.Years = int.Parse(line.Split('/')[2]);
-    car.PreTaxPrices= float.Parse(line.Split('/')[3]);
-    car.PriceIncludingTax = car.PreTaxPrices * 1.2f;
-    car.Color = line.Split('/')[4];
-    car.IsSelling = bool.Parse(line.Split('/')[5]);
-    
-    cars.Add(car);
-
-}
-carRepository.AddCars(cars);
-#endregion
-
-
 #region CSV Client
 
 String path_client = configuration.GetRequiredSection("CSVFiles2")["Customers"];
@@ -87,3 +60,33 @@ for (int i = 1; i < lignes_client.Length; i++)
 dbConnection.AddClients(client);
 
 #endregion
+
+
+
+#region  CSV Car
+
+String path_car = configuration.GetRequiredSection("CSVFiles")["Car"];
+
+List<Car> cars = new List<Car>(); 
+
+var lignes = File.ReadAllLines(path_car);
+
+for (int i = 1; i < lignes.Length; i++)
+{
+    String line = lignes[i];
+    Car car = new Car();
+    car.Brand = line.Split('/')[0];
+    car.Model = line.Split('/')[1];
+    car.Years = int.Parse(line.Split('/')[2]);
+    car.PreTaxPrices= float.Parse(line.Split('/')[3],CultureInfo.InvariantCulture);
+    car.PriceIncludingTax = car.PreTaxPrices * 1.2f;
+    car.Color = line.Split('/')[4];
+    car.IsSelling = bool.Parse(line.Split('/')[5]);
+    
+    cars.Add(car);
+
+}
+carRepository.AddCars(cars);
+#endregion
+
+
