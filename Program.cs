@@ -29,7 +29,7 @@ var host = Host.CreateDefaultBuilder(args)
     .Build();
 
 using var scope = host.Services.CreateScope();
-ICarRepository clientRepository = scope.ServiceProvider.GetRequiredService<ICarRepository>();
+ICarRepository carRepository = scope.ServiceProvider.GetRequiredService<ICarRepository>();
 
 #endregion
 
