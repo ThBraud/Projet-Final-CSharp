@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 
 public class CarDbContext : DbContext
 {
+    #region tables principales + constructeurs
+    
     // --- Tables principales ---
     public DbSet<Client> Customers { get; set; }
     public DbSet<Car> Cars { get; set; }
@@ -15,7 +17,9 @@ public class CarDbContext : DbContext
     { }
     // Constructeur vide pour EF CLI
     public CarDbContext() { }
-
+    #endregion
+    
+    #region Relations et connexions
     // --- Configuration des relations ---
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -42,4 +46,5 @@ public class CarDbContext : DbContext
             optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
         }
     }
+    #endregion
 }
