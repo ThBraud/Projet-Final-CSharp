@@ -33,3 +33,31 @@ using var scope = host.Services.CreateScope();
 ICarRepository clientRepository = scope.ServiceProvider.GetRequiredService<ICarRepository>();
 
 #endregion
+
+#region  CSV
+
+String path = configuration.GetRequiredSection("CSVFiles")["CoursSupDeVinci"];
+
+List<Car> cars = new List<Car>(); 
+
+var lignes = File.ReadAllLines(path);
+
+for (int i = 1; i < lignes.Length; i++)
+{
+    String line = lignes[i];
+    Car person = new Car();
+    cars.
+    cars.brand = line.Split
+    person.Lastname = line.Split(',')[1];
+    person.Firstname = line.Split(',')[2];
+    person.Birthdate = DateTimeUtils.ConvertToDateTime(line.Split(',')[3]);
+    person.S = Int32.Parse(line.Split(',')[5]);
+    
+  
+    
+   
+    
+    cars.Add(person);
+}
+
+#endregion
