@@ -8,8 +8,6 @@ using Npgsql;
 using Projet_Finale.Data;
 using Projet_Finale.Model;
 
-
-
 #region lancement services
 
 // Charger la configuration manuellement
