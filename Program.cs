@@ -134,6 +134,21 @@ for (int i = 1; i < lignes.Length; i++)
     //carRepository.UpdateCars(carsFromDb);
     #endregion
 
+# region Liste voitures
+// Pour avoir le symbole € (donner par chatgpt)
+    Console.OutputEncoding = System.Text.Encoding.UTF8;
+// avoir la liste de toutes les voitures
+    
+    var allCars = carRepository.GetAllCar();
+
+    Console.WriteLine("\n===== Liste complète des voitures =====\n");
+    foreach (var car in allCars)
+    {
+        Console.WriteLine($"Marque : {car.Brand} | Modèle : {car.Model} | Couleur : {car.Color} | Année : {car.Years} | Prix TTC : {car.PriceIncludingTax} €");
+    }
+
+#endregion
+
 # region historique achat
 // Pour créer un historique des achats
 var purchaseHistory = new List<(Car car, Client client, DateTime purchaseDate)>();
@@ -170,20 +185,3 @@ foreach (var entry in purchaseHistory)
 
 
 #endregion
-
-# region Liste voitures
-// Pour avoir le symbole € (donner par chatgpt)
-    Console.OutputEncoding = System.Text.Encoding.UTF8;
-// avoir la liste de toutes les voitures
-    
-    var allCars = carRepository.GetAllCar();
-
-    Console.WriteLine("\n===== Liste complète des voitures =====\n");
-    foreach (var car in allCars)
-    {
-        Console.WriteLine($"Marque : {car.Brand} | Modèle : {car.Model} | Couleur : {car.Color} | Année : {car.Years} | Prix TTC : {car.PriceIncludingTax} €");
-    }
-
-#endregion
-
-
