@@ -62,7 +62,7 @@ for (int i = 1; i < lignes_client.Length; i++)
     
 }
 //Insertion données Client
-clientRepository.AddClients(client);
+//clientRepository.AddClients(client);
 var clientsFromDb = clientRepository.GetAllClients();
 #endregion
 
@@ -93,7 +93,7 @@ for (int i = 1; i < lignes.Length; i++)
 }
 
 //Insertion données Car
-    carRepository.AddCars(cars);
+    //carRepository.AddCars(cars);
 
 // Après l'insertion des voitures
     var carsFromDb = carRepository.GetAllCar();
@@ -121,8 +121,20 @@ for (int i = 1; i < lignes.Length; i++)
     }
 
 // Mise à jour en base des voitures avec leur ClientId
-    carRepository.UpdateCars(carsFromDb);
+    //carRepository.UpdateCars(carsFromDb);
+    #endregion
 
+# region Liste voitures
+// Pour avoir le symbole €
+    Console.OutputEncoding = System.Text.Encoding.UTF8;
+// avoir la liste de toutes les voitures
+    Console.WriteLine("\n===== Liste complète des voitures =====\n");
+    var allCars = carRepository.GetAllCar();
+
+    foreach (var car in allCars)
+    {
+        Console.WriteLine($"Marque : {car.Brand} | Modèle : {car.Model} | Couleur : {car.Color} | Année : {car.Years} | Prix TTC : {car.PriceIncludingTax} €");
+    }
 
 #endregion
 
