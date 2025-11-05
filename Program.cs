@@ -152,6 +152,10 @@ for (int i = 1; i < lignes.Length; i++)
 
 #endregion
 
+using var pigeon = host.Services.CreateScope();
+var carService = pigeon.ServiceProvider.GetRequiredService<ICarRepository>();
+carService.SellingCar();
+
 # region historique achat
 // Pour créer un historique des achats
 var purchaseHistory = new List<(Car car, Client client, DateTime purchaseDate)>();
@@ -185,6 +189,5 @@ foreach (var entry in purchaseHistory)
                       $"Date d'achat: {entry.purchaseDate.ToShortDateString()} | " +
                       $"Client: {entry.client.FirstName} {entry.client.LastName}");
 }
-
 
 #endregion

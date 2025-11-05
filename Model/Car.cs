@@ -27,7 +27,7 @@ public class Car
      
     private string color {get; set;}
 
-    
+
     private bool is_selling {get; set;}
     
     
