@@ -8,6 +8,7 @@ using Projet_Finale.Data;
 using Projet_Finale.Model;
 using Projet_Finale.Utils;
 using System.Globalization;
+using Microsoft.Extensions.Logging;
 #endregion
 
 #region lancement services
@@ -19,10 +20,18 @@ var configuration = new ConfigurationBuilder()
     .Build();
 
 var host = Host.CreateDefaultBuilder(args)
+    //Ajouter avec l'aide de l'IA pour avoir une meilleure visibilité sur la console, au moment de l'appel de certain input. 
+    .ConfigureLogging(logging =>
+    {
+        logging.ClearProviders(); // supprime la sortie console par défaut
+        logging.SetMinimumLevel(LogLevel.Warning); // affiche seulement les warnings et erreurs
+    })
+    
     .ConfigureServices(services =>
     {
         services.AddDbContext<CarDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+            
 
         // On enregistre notre service applicatif
         services.AddTransient<DbConnection>();
@@ -97,6 +106,7 @@ for (int i = 1; i < lignes.Length; i++)
 
 // Après l'insertion des voitures
     var carsFromDb = carRepository.GetAllCar();
+    var clients = clientRepository.GetAllClients().ToList();
     var random = new Random();
 
     // On récupère les clients déjà présents dans la BDD
@@ -124,13 +134,51 @@ for (int i = 1; i < lignes.Length; i++)
     //carRepository.UpdateCars(carsFromDb);
     #endregion
 
+# region historique achat
+// Pour créer un historique des achats
+var purchaseHistory = new List<(Car car, Client client, DateTime purchaseDate)>();
+
+foreach (var car in carsFromDb)
+{
+    if (car.IsSelling && car.id_client != null)
+    {
+        var purchaser = clientsFromDb.First(c => c.id_client == car.id_client);
+
+        // Générer une date d'achat aléatoire dans les 5 dernières années, on se dit qu'on a ouvert il y a 5 ans
+        var start = DateTime.Now.AddYears(-5);
+        var range = (DateTime.Now - start).Days;
+        var purchaseDate = start.AddDays(random.Next(range));
+
+        purchaseHistory.Add((car, purchaser, purchaseDate));
+    }
+}
+
+// Trier l'historique par date croissante
+purchaseHistory = purchaseHistory.OrderBy(p => p.purchaseDate).ToList();
+
+// Pour avoir le symbole € (donner par chatgpt)
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+// afficher l'historique d'achat dans la console
+Console.WriteLine("\n===== Historique des achats =====\n");
+
+foreach (var entry in purchaseHistory)
+{
+    Console.WriteLine($"Marque: {entry.car.Brand} Model: {entry.car.Model} Years: {entry.car.Years} Price : {entry.car.PriceIncludingTax} € | " +
+                      $"Date d'achat: {entry.purchaseDate.ToShortDateString()} | " +
+                      $"Client: {entry.client.FirstName} {entry.client.LastName}");
+}
+
+
+#endregion
+
 # region Liste voitures
-// Pour avoir le symbole €
+// Pour avoir le symbole € (donner par chatgpt)
     Console.OutputEncoding = System.Text.Encoding.UTF8;
 // avoir la liste de toutes les voitures
-    Console.WriteLine("\n===== Liste complète des voitures =====\n");
+    
     var allCars = carRepository.GetAllCar();
 
+    Console.WriteLine("\n===== Liste complète des voitures =====\n");
     foreach (var car in allCars)
     {
         Console.WriteLine($"Marque : {car.Brand} | Modèle : {car.Model} | Couleur : {car.Color} | Année : {car.Years} | Prix TTC : {car.PriceIncludingTax} €");
