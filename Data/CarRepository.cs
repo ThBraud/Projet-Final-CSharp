@@ -24,5 +24,14 @@ public class CarRepository : ICarRepository
     {
         return _carDbContext.Cars.ToList();
     }
+    
+    public void UpdateCars(IEnumerable<Car> cars)
+    {
+        _carDbContext.Cars.UpdateRange(cars);
+        _carDbContext.SaveChanges();
+    }
+    
+    
+    
 }
     

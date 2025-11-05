@@ -89,31 +89,39 @@ for (int i = 1; i < lignes.Length; i++)
     car.IsSelling = bool.Parse(line.Split('/')[5]);
 
     cars.Add(car);
-
-    var clients = clientRepository.GetAllClients();
-    var random = new Random();
-
-    for (int j = 0; j < cars.Count; j++)
-    {
-        var car_sell = cars[j];
-
-        // Si la voiture est vendue, on lui assigne un client aléatoire
-        if (car_sell.IsSelling)
-        {
-            var randomClient = clientsFromDb[random.Next(clientsFromDb.Count)];
-            car_sell.id_client = randomClient.id_client; // UUID du client
-            car_sell.Client = randomClient;
-        }
-        else
-        {
-            car_sell.id_client = null; // aucun client
-            car_sell.Client = null;
-        }
-    }
+    
 }
 
 //Insertion données Car
     carRepository.AddCars(cars);
+
+// Après l'insertion des voitures
+    var carsFromDb = carRepository.GetAllCar();
+    var random = new Random();
+
+    // On récupère les clients déjà présents dans la BDD
+    var allClients = clientRepository.GetAllClients().ToList();
+
+// On parcourt les voitures pour assigner un client aléatoire si IsSelling = true
+    foreach (var car in carsFromDb)
+    {
+        if (car.IsSelling)
+        {
+            // Choisit un client aléatoire
+            var randomClient = allClients[random.Next(allClients.Count)];
+        
+            // Lie la voiture au client
+            car.id_client = randomClient.id_client;
+        }
+        else
+        {
+            // Voitures non vendues → pas de client
+            car.id_client = null;
+        }
+    }
+
+// Mise à jour en base des voitures avec leur ClientId
+    carRepository.UpdateCars(carsFromDb);
 
 
 #endregion

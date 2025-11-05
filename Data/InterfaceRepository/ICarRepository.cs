@@ -8,4 +8,5 @@ public interface ICarRepository
     void AddCars(List<Car> cars); 
     List<Car> GetAllCar();
        
+    void UpdateCars(IEnumerable<Car> cars);
 }
