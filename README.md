@@ -8,5 +8,5 @@ L’objectif est de pouvoir **identifier** si une voiture est **vendue** ou **en
 ## 🎯 Objectif du projet  
 Créer une **application en C# (.NET 9)** permettant de :  
 - Importer des données depuis des **fichiers CSV** (clients et voitures) ;  
-- Générer les **tables correspondantes** dans une base de données **PostgreSQL** ;  
+- Générer les **tables correspondantes** dans une base de données **PostgreSQL**
 - Gérer la **relation** entre les **clients** et les **voitures**.  
