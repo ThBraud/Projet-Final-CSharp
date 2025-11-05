@@ -11,7 +11,7 @@ using System.Globalization;
 using Microsoft.Extensions.Logging;
 #endregion
 
-#region lancement services
+    #region lancement services
 
 // Charger la configuration manuellement
 var configuration = new ConfigurationBuilder()
@@ -46,7 +46,7 @@ var carRepository = scope.ServiceProvider.GetRequiredService<ICarRepository>();
 using var scope_client = host.Services.CreateScope();
 IClientRepository clientRepository = scope_client.ServiceProvider.GetRequiredService<IClientRepository>();
 
-#endregion
+    #endregion
 
 #region CSV Client
 
@@ -71,6 +71,7 @@ for (int i = 1; i < lignes_client.Length; i++)
     
 }
 //Insertion données Client
+// Commenter pour pas refaire l'insertion a chaque fois. 
 //clientRepository.AddClients(client);
 var clientsFromDb = clientRepository.GetAllClients();
 #endregion
@@ -102,6 +103,7 @@ for (int i = 1; i < lignes.Length; i++)
 }
 
 //Insertion données Car
+    // Commenter pour pas refaire l'insertion a chaque fois. 
     //carRepository.AddCars(cars);
 
 // Après l'insertion des voitures
@@ -131,6 +133,7 @@ for (int i = 1; i < lignes.Length; i++)
     }
 
 // Mise à jour en base des voitures avec leur ClientId
+    // Commenter pour pas refaire l'insertion a chaque fois. 
     //carRepository.UpdateCars(carsFromDb);
     #endregion
 
