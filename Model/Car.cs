@@ -1,7 +1,9 @@
+#region Using Directives
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+#endregion
 
 namespace Projet_Finale.Model; 
-using System.ComponentModel.DataAnnotations;
 public class Car
 {
     [Key]

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿#region Using Directives
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +8,7 @@ using Projet_Finale.Data;
 using Projet_Finale.Model;
 using Projet_Finale.Utils;
 using System.Globalization;
+#endregion
 
 #region lancement services
 
