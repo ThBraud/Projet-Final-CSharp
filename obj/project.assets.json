@@ -3863,13 +3863,14 @@
       "Microsoft.EntityFrameworkCore.Design >= 9.0.10",
       "Microsoft.Extensions.Configuration >= 9.0.10",
       "Microsoft.Extensions.Configuration.Json >= 9.0.10",
+      "Microsoft.Extensions.DependencyInjection >= 9.0.10",
       "Microsoft.Extensions.Hosting >= 9.0.10",
       "Npgsql >= 9.0.4",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lucas\\.nuget\\packages\\": {}
+    "C:\\Users\\Thomas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -3877,11 +3878,11 @@
       "projectUniqueName": "C:\\Csharp_Projet_Finale\\Projet_Finale\\Projet_Finale.csproj",
       "projectName": "Projet_Finale",
       "projectPath": "C:\\Csharp_Projet_Finale\\Projet_Finale\\Projet_Finale.csproj",
-      "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Thomas\\.nuget\\packages\\",
       "outputPath": "C:\\Csharp_Projet_Finale\\Projet_Finale\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Thomas\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -3926,6 +3927,10 @@
             "version": "[9.0.10, )"
           },
           "Microsoft.Extensions.Configuration.Json": {
+            "target": "Package",
+            "version": "[9.0.10, )"
+          },
+          "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
             "version": "[9.0.10, )"
           },

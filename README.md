@@ -10,3 +10,14 @@ Créer une **application en C# (.NET 9)** permettant de :
 - Importer des données depuis des **fichiers CSV** (clients et voitures) ;  
 - Générer les **tables correspondantes** dans une base de données **PostgreSQL**
 - Gérer la **relation** entre les **clients** et les **voitures**.  
+
+
+## Extensions a installer 
+
+dotnet add package Microsoft.EntityFrameworkCore  
+dotnet add package Microsoft.Extensions.Configuration  
+dotnet add package Microsoft.Extensions.Configuration.Json  
+dotnet add package Microsoft.Extensions.Hosting  
+dotnet add package Microsoft.Extensions.DependencyInjection  
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+
