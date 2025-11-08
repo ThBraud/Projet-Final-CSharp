@@ -25,7 +25,9 @@ namespace Projet_Finale.Data
         {
             return _context.Customers.ToList(); // récupérer toutes les lignes
         }
-        
+
+        #region Ajout clients
+
         // Pour la création de client
         public void AddClient()
         {
@@ -80,6 +82,7 @@ namespace Projet_Finale.Data
 
             Console.WriteLine($" Client ajouté avec succès : {client.FirstName} {client.LastName} (ID = {client.id_client})");
         }
+        #endregion
     }
 
 }

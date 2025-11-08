@@ -153,7 +153,7 @@ for (int i = 1; i < lignes.Length; i++)
 #endregion
 
 #region new car and new customer
-
+// question permetant de lancer le projet sans rajouter une voiture a chaque fois
 Console.WriteLine("Voulez vous ajouter une nouvelle voiture? (oui/ non) : ");
 var newcar = Console.ReadLine();
 if (newcar == "oui")
@@ -162,6 +162,11 @@ if (newcar == "oui")
     var AddNewCar = NewCar.ServiceProvider.GetRequiredService<ICarRepository>();
     AddNewCar.AddCar();
 }
+if (newcar == "non"){ }
+else
+{
+    Console.WriteLine($"répondez par oui ou par non,  pas avec {newcar}\"");
+}
 Console.WriteLine("Voulez vous ajouter un nouveau client? (oui / non) : ");
 var newclient = Console.ReadLine();
 if (newclient == "oui")
@@ -169,6 +174,11 @@ if (newclient == "oui")
     using var NewClient = host.Services.CreateScope();
     var NewCustomer = NewClient.ServiceProvider.GetRequiredService<IClientRepository>();
     NewCustomer.AddClient();
+}
+if (newclient == "non"){ }
+else
+{
+    Console.WriteLine($"répondez par oui ou par non, pas avec {newclient}");
 }
 #endregion
 
@@ -181,6 +191,12 @@ if (newsell == "oui")
     using var selling = host.Services.CreateScope();
     var carService = selling.ServiceProvider.GetRequiredService<ICarRepository>();
     carService.SellingCar();
+}
+
+if (newsell == "non"){ }
+else
+{
+    Console.WriteLine($"répondez par oui ou par non,  pas avec {newsell}\"");
 }
 #endregion
 

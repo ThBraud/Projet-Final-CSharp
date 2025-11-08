@@ -10,11 +10,11 @@
         "projectUniqueName": "C:\\Csharp_Projet_Finale\\Projet_Finale\\Projet_Finale.csproj",
         "projectName": "Projet_Finale",
         "projectPath": "C:\\Csharp_Projet_Finale\\Projet_Finale\\Projet_Finale.csproj",
-        "packagesPath": "C:\\Users\\Thomas\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
         "outputPath": "C:\\Csharp_Projet_Finale\\Projet_Finale\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Thomas\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"

@@ -35,6 +35,9 @@ public class CarRepository : ICarRepository
         _carDbContext.Cars.UpdateRange(cars);
         _carDbContext.SaveChanges();
     }
+
+    #region Vente de voiture
+
     //Pour vendre une voiture
     public void SellingCar()
     {
@@ -88,6 +91,9 @@ public class CarRepository : ICarRepository
 
         Console.WriteLine(" Vente enregistrée en base de données.\n");
     }
+    #endregion
+    
+    #region ajout voiture
     // Ajouter une voiture
     public void AddCar()
     {
@@ -154,7 +160,7 @@ public class CarRepository : ICarRepository
         Console.WriteLine($"\n Voiture ajoutée avec succès : {car.Brand} {car.Model} ({car.Years})");
         Console.WriteLine($"ID de la voiture : {car.Id_car}");
     }
-
+    #endregion
     
 }
     
