@@ -152,9 +152,38 @@ for (int i = 1; i < lignes.Length; i++)
 
 #endregion
 
-using var selling = host.Services.CreateScope();
-var carService = selling.ServiceProvider.GetRequiredService<ICarRepository>();
-carService.SellingCar();
+#region new car and new customer
+
+Console.WriteLine("voulez vous ajouter une nouvelle voiture? (oui/ non) : ");
+var newcar = Console.ReadLine();
+if (newcar == "oui")
+{
+    using var NewCar = host.Services.CreateScope();
+    var AddNewCar = NewCar.ServiceProvider.GetRequiredService<ICarRepository>();
+    AddNewCar.AddCar();
+}
+Console.WriteLine("voulez vous ajouter un nouveau client? (oui / non) : ");
+var newclient = Console.ReadLine();
+if (newclient == "oui")
+{
+    using var NewClient = host.Services.CreateScope();
+    var NewCustomer = NewClient.ServiceProvider.GetRequiredService<IClientRepository>();
+    NewCustomer.AddClient();
+}
+#endregion
+
+#region Sell car
+
+Console.WriteLine("voulez vous acheter une voiture? (oui/ non) : ");
+var newsell = Console.ReadLine();
+if (newsell == "oui")
+{
+    using var selling = host.Services.CreateScope();
+    var carService = selling.ServiceProvider.GetRequiredService<ICarRepository>();
+    carService.SellingCar();
+}
+#endregion
+
 
 # region historique achat
 // Pour créer un historique des achats

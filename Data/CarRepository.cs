@@ -37,7 +37,7 @@ public class CarRepository : ICarRepository
     
     public void SellingCar()
     {
-        Console.WriteLine("===== 🚗 Vente d'une voiture =====");
+        Console.WriteLine("=====  Vente d'une voiture =====");
         Console.Write("Entrez l'ID de la voiture à vendre : ");
         var input = Console.ReadLine();
 
@@ -86,6 +86,71 @@ public class CarRepository : ICarRepository
             Console.WriteLine("Client : Aucun client attribué.");
 
         Console.WriteLine(" Vente enregistrée en base de données.\n");
+    }
+    public void AddCar()
+    {
+        Console.WriteLine("=====  Ajouter une nouvelle voiture =====");
+
+        Console.Write("Marque : ");
+        var brand = Console.ReadLine()?.Trim();
+        if (string.IsNullOrWhiteSpace(brand))
+        {
+            Console.WriteLine("La marque est obligatoire.");
+            return;
+        }
+
+        Console.Write("Modèle : ");
+        var model = Console.ReadLine()?.Trim();
+        if (string.IsNullOrWhiteSpace(model))
+        {
+            Console.WriteLine(" Le modèle est obligatoire.");
+            return;
+        }
+
+        Console.Write("Année : ");
+        var yearInput = Console.ReadLine();
+        if (!int.TryParse(yearInput, out int years))
+        {
+            Console.WriteLine(" Année invalide.");
+            return;
+        }
+
+        Console.Write("Prix HT : ");
+        var priceInput = Console.ReadLine();
+        if (!float.TryParse(priceInput, System.Globalization.CultureInfo.InvariantCulture, out float preTaxPrice))
+        {
+            Console.WriteLine(" Prix invalide.");
+            return;
+        }
+
+        Console.Write("Couleur : ");
+        var color = Console.ReadLine()?.Trim();
+
+        Console.Write("Vendu ? (true/false) : ");
+        var isSellingInput = Console.ReadLine();
+        bool isSelling = false;
+        if (!string.IsNullOrWhiteSpace(isSellingInput))
+            bool.TryParse(isSellingInput, out isSelling);
+
+        // Crée la voiture avec un GUID unique
+        var car = new Car
+        {
+            Id_car = Guid.NewGuid(),
+            Brand = brand,
+            Model = model,
+            Years = years,
+            PreTaxPrices = preTaxPrice,
+            PriceIncludingTax = preTaxPrice * 1.2f,
+            Color = color,
+            IsSelling = isSelling,
+            id_client = null // Pas de client par défaut
+        };
+
+        _carDbContext.Cars.Add(car);
+        _carDbContext.SaveChanges();
+
+        Console.WriteLine($"\n Voiture ajoutée avec succès : {car.Brand} {car.Model} ({car.Years})");
+        Console.WriteLine($"ID de la voiture : {car.Id_car}");
     }
 
     
