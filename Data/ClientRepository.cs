@@ -14,7 +14,7 @@ namespace Projet_Finale.Data
         {
             _context = context;
         }
-
+        // Pour ajouter les clients a la database
         public void AddClients(List<Client> clients)
         {
             _context.Customers.AddRange(clients); // ajoute toute la liste en une seule fois
@@ -26,6 +26,7 @@ namespace Projet_Finale.Data
             return _context.Customers.ToList(); // récupérer toutes les lignes
         }
         
+        // Pour la création de client
         public void AddClient()
         {
             Console.WriteLine("=====  Ajouter un nouveau client =====");
@@ -53,6 +54,7 @@ namespace Projet_Finale.Data
                 Console.WriteLine(" Date invalide.");
                 return;
             }
+            // Pour force la date a avoir le bon format sinon y'a une erreur 
             birthDate = DateTime.SpecifyKind(birthDate, DateTimeKind.Utc);
 
             Console.WriteLine("Numéro de téléphone : ");
