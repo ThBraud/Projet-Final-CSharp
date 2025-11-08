@@ -34,7 +34,9 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 ```  
 
 ## 🗄️ Création d'une database  
-Après avoir installé PostgreSQL, vous devriez avoir sur votre machine PgAdmin 4. Ouvrez-le et créez une database, pour cela il suffit de faire un clic droit sur Database puis Create. Une fois cela fait, laisser PgAdmin ouvert en fond. Puis sur Rider dans le projet, vous devez modifier le fichier appsettings.json. Précisemment cette ligne ``"DefaultConnection": "Host=localhost;Port=5432;Database=Projet;Username=postgres;Password=root"``. Les paramètres à changer sont le port si au démarrage de pgAdmin, vous avez modifié le port par défaut. Le Nom de votre Database, votre Username et votre Password liés à votre PgAdmin.  
+Après avoir installé PostgreSQL, vous devriez avoir sur votre machine PgAdmin 4. Ouvrez-le et créez une database, pour cela il suffit de faire un clic droit sur Database puis Create. Une fois cela fait, laisser PgAdmin ouvert en fond.  
+Puis sur Rider dans le projet, vous devez modifier le fichier appsettings.json. Précisemment cette ligne ``"DefaultConnection": "Host=localhost;Port=5432;Database=Projet;Username=postgres;Password=root"``.  
+Les paramètres à changer sont le port si au démarrage de pgAdmin, vous avez modifié le port par défaut. Le Nom de votre Database, votre Username et votre Password liés à votre PgAdmin.  
 Une fois cela fait, sur Rider dans les onglets sur la droite, cliquer sur Database (le 3ème onglet). Puis connecter votre Database au projet. Sélectionnez bien PostgreSQL. En cas d'erreur, cela peut être lié à la méthode d'authentification, dans ce cas, cliquez sur l'erreur et vous pourrez la modifier.  
 
 ## 🔄 Migration pour créer les tables liée au class C#
@@ -50,7 +52,7 @@ Pour le CSV client : Dans la région CSV client, **ligne 75**.
 Pour le CSV car : Dans la région CSV voitures, **ligne 107 et 137**. Dans le cas du CSV voiture, il n'y en a pas vraiment deux, simplement le premier insère les données des voitures et le deuxième sert à faire le lien entre les clients et les voitures. 
 
 >[!Warning] 
-N'oubliez pas de les remettre, une fois l'insertion faite. Sinon les données seront réinsérer à chaque fois que le projet sera lancé. 
+N'oubliez pas de remettre les commentaires, une fois l'insertion faite. Sinon les données seront réinsérer à chaque fois que le projet sera lancé. 
 
 
 # ▶️ Lancement du projet 
