@@ -53,6 +53,7 @@ namespace Projet_Finale.Data
                 Console.WriteLine(" Date invalide.");
                 return;
             }
+            birthDate = DateTime.SpecifyKind(birthDate, DateTimeKind.Utc);
 
             Console.WriteLine("Numéro de téléphone : ");
             var phone = Console.ReadLine()?.Trim();

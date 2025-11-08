@@ -154,7 +154,7 @@ for (int i = 1; i < lignes.Length; i++)
 
 #region new car and new customer
 
-Console.WriteLine("voulez vous ajouter une nouvelle voiture? (oui/ non) : ");
+Console.WriteLine("Voulez vous ajouter une nouvelle voiture? (oui/ non) : ");
 var newcar = Console.ReadLine();
 if (newcar == "oui")
 {
@@ -162,7 +162,7 @@ if (newcar == "oui")
     var AddNewCar = NewCar.ServiceProvider.GetRequiredService<ICarRepository>();
     AddNewCar.AddCar();
 }
-Console.WriteLine("voulez vous ajouter un nouveau client? (oui / non) : ");
+Console.WriteLine("Voulez vous ajouter un nouveau client? (oui / non) : ");
 var newclient = Console.ReadLine();
 if (newclient == "oui")
 {
