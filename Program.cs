@@ -11,7 +11,7 @@ using System.Globalization;
 using Microsoft.Extensions.Logging;
 #endregion
 
-    #region lancement services
+#region lancement services
 
 // Charger la configuration manuellement
 var configuration = new ConfigurationBuilder()

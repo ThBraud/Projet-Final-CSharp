@@ -10,14 +10,15 @@ public class DbConnection
     {
         _carDbContext = carDbContext;
     }
-
+    
+    // Ajouter le CSV voitures
     public void AddCars(List<Car> cars)
     {
         _carDbContext.Cars.AddRange(cars);
 
         _carDbContext.SaveChanges();
     }
-    
+    // Ajouter le CSV client
     public void AddClients(List<Client> clients)
     {
         _carDbContext.Customers.AddRange(clients);

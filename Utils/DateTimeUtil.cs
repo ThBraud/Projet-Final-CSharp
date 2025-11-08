@@ -11,7 +11,7 @@ public class DateTimeUtils
         }
         else
         {
-            Console.WriteLine($"La date de P1 est mal renseignée");
+            Console.WriteLine($"La date est mal renseignée");
             return DateTime.Now;
         }
     }

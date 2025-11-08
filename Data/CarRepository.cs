@@ -16,7 +16,7 @@ public class CarRepository : ICarRepository
         _carDbContext = carDbContext;
     }
 
-    //Pour ajouter plusieurs voitures
+    //Pour ajouter le CSV voitures
     public void AddCars(List<Car> cars)
     {
         _carDbContext.Cars.AddRange(cars);
@@ -29,12 +29,13 @@ public class CarRepository : ICarRepository
         return _carDbContext.Cars.ToList();
     }
     
+    // Pour lier les voitures et les clients
     public void UpdateCars(IEnumerable<Car> cars)
     {
         _carDbContext.Cars.UpdateRange(cars);
         _carDbContext.SaveChanges();
     }
-    
+    //Pour vendre une voiture
     public void SellingCar()
     {
         Console.WriteLine("=====  Vente d'une voiture =====");
@@ -87,6 +88,7 @@ public class CarRepository : ICarRepository
 
         Console.WriteLine(" Vente enregistrée en base de données.\n");
     }
+    // Ajouter une voiture
     public void AddCar()
     {
         Console.WriteLine("=====  Ajouter une nouvelle voiture =====");

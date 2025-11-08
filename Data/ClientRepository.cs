@@ -54,7 +54,7 @@ namespace Projet_Finale.Data
                 Console.WriteLine(" Date invalide.");
                 return;
             }
-            // Pour force la date a avoir le bon format sinon y'a une erreur 
+            // Pour forcer la date à avoir le bon format sinon y'a une erreur 
             birthDate = DateTime.SpecifyKind(birthDate, DateTimeKind.Utc);
 
             Console.WriteLine("Numéro de téléphone : ");
