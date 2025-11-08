@@ -152,8 +152,8 @@ for (int i = 1; i < lignes.Length; i++)
 
 #endregion
 
-using var pigeon = host.Services.CreateScope();
-var carService = pigeon.ServiceProvider.GetRequiredService<ICarRepository>();
+using var selling = host.Services.CreateScope();
+var carService = selling.ServiceProvider.GetRequiredService<ICarRepository>();
 carService.SellingCar();
 
 # region historique achat
